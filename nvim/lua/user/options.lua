@@ -38,3 +38,6 @@ vim.opt.confirm = true
 vim.opt.undofile = true -- persistent undo across files 
 vim.opt.backup = true -- automatically save a backup file
 vim.opt.backupdir:remove('.') -- keep backups out of the current directory
+
+-- Git Signs
+vim.opt.signcolumn = 'yes:1'
