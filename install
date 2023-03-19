@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+
+# Directory Setup
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.config
+
+# Kitty
+rm -rf $HOME/.config/kitty
+ln -s $DOTFILES/kitty $HOME/.config/kitty
+
+# tmux
+rm -rf $HOME/.tmux.conf
+ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
+
+# t script
+rm -rf $HOME/.local/bin/t
+ln -s $DOTFILES/scripts/t $HOME/.local/bin/t
+
+# Nvim
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/nvim $HOME/.config/nvim
