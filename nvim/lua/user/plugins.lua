@@ -185,9 +185,62 @@ use({
 -- Git Commands
 use({
   'tpope/vim-fugitive',
-  requires = 'tpope/vim-rubarb',
+  requires = 'tpope/vim-rhubarb',
 })
 
+-- floating terminal
+use({
+  'voldikss/vim-floaterm',
+  config = function ()
+    require('user/plugins/floaterm')
+  end
+})
+
+-- Improved Syntax Highlighting
+use({
+  'nvim-treesitter/nvim-treesitter',
+  run = function ()
+    require ('nvim-treesitter.install').update ({ with_sync = true })
+  end,
+  requires = {
+  'JoosepAlviste/nvim-ts-context-commentstring',
+  'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  config = function()
+    require ('user.plugins.treesitter')
+   end,
+})
+
+use({
+  'neovim/nvim-lspconfig',
+  requires = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'b0o/schemastore.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    'jayp0521/mason-null-ls.nvim'
+  },
+  config = function ()
+    require ('user/plugins/lsp_languages_config')
+  end
+})
+
+-- Completion
+use({
+  'hrsh7th/nvim-cmp',
+  requires = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind-nvim',
+  },
+  config = function()
+    require('user/plugins/cmp')
+  end,
+})
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
